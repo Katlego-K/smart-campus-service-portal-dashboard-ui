@@ -39,8 +39,8 @@ const data = [
 const AttendanceChart = () => {
     return (
         <div className="br-white rounded-lg p-4 h-full">
-            <div className=''>
-                <h1>Attendance</h1>
+            <div className='className="flex justify-between items-center"'>
+                <h1 className='text-lg font-semibold'>Attendance</h1>
                 <Image src="/moreDark.png" alt='' width={20} height={20}/>
             </div>
             <ResponsiveContainer width="100%" height="90%">
@@ -50,13 +50,24 @@ const AttendanceChart = () => {
                 data={data}
                 barSize={20}
                 >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke='#ddd' />
+                <XAxis dataKey="name" axisLine={false} tick={{fill:"#d1d5db"}} tickLine={false}/>
+                <YAxis axisLine={false} tick={{fill:"#d1d5db"}} tickLine={false}/>
+                <Tooltip
+                    contentStyle={{ borderRadius:"10px",borderColor:"lightgray"}}
+                />
                 <Tooltip />
                 <Legend align='left' verticalAlign='top' wrapperStyle={{paddingTop:"20px",paddingBottom:"40px"}}/>
-                <Bar dataKey="present" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-                <Bar dataKey="absent" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
+                <Bar dataKey="present"
+                     fill="#FAE27C"
+                    legendType='circle'
+                    radius={[10,10,0,0]}
+                />
+                <Bar dataKey="absent"
+                     fill="#C3EBFA" 
+                    legendType='circle'
+                    radius={[10,10,0,0]}
+                 />
                 </BarChart>
             </ResponsiveContainer>
         </div>
