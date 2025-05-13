@@ -1,50 +1,38 @@
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
-import { lecturersData, role } from "@/lib/data";
+import {assignmentsData, examsData, lessonsData, role} from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 
-type Lecturer = {
+type Assignment = {
    id:number;
-   lecturerId:string;
-   name:string;
-   email:string;
-   photo:string;
-   phone:string;
-   subjects:string[];
-   classes:string[];
-   address:string;
+   subject:string;
+   class:string;
+   lecturer:string;
+   dueDate:string;
 }
 
 const  columns =[
    {
-      header: "Info", accessor: "info"
-   },
-   {
-      header: "Lecturer ID",
-       accessor: "lecturerId", 
+      header: "Subject Name",
+       accessor: "name", 
        className: "hidden md:table-cell",
    },
    {
-      header: "Subjects",
-       accessor: "subjects", 
+      header: "Class",
+       accessor: "class", 
        className: "hidden md:table-cell",
    },
    {
-      header: "Classes",
-       accessor: "classes", 
-       className: "hidden md:table-cell",
-   },
-   {
-      header: "Phone",
-       accessor: "phone", 
+      header: "Lecturer",
+       accessor: "lecturer", 
        className: "hidden lg:table-cell",
    },
    {
-      header: "Address",
-       accessor: "address", 
-       className: "hidden lg:table-cell",
+      header: "Due Date",
+       accessor: "dueDate",
+       className: "hidden md:table-cell",
    },
    {
       header: "Actions",
@@ -52,25 +40,18 @@ const  columns =[
    },
 ]
 
-const LecturerListPage = () => {
-   const renderRow = (item: Lecturer) => (
-      <tr key={item.id} className="border-n border-gray-200 even:bg-slate-50 text-sm bg:lamaPurpleLight">
-         <td className="flex items-center gap-4 p-4">
-            <Image src={item.photo} alt="" width={40} height={40} className="md:hidden xl:block w-10 h-10 rounded-full object-cover"
-            />
-            <div className="flex flex-col">
-               <h3 className="font-semibold">{item.name}</h3>
-               <p className="text-xs text-gray-500">{item?.email}</p>
-            </div>
-         </td>
-         <td className="hidden md:table-cell">{item.lecturerId}</td>
-         <td className="hidden md:table-cell">{item.subjects.join(",")}</td>
-         <td className="hidden md:table-cell">{item.classes.join(",")}</td>
-         <td className="hidden md:table-cell">{item.phone}</td>
-         <td className="hidden md:table-cell">{item.address}</td>
-         <td>
+const AssignmentListPage = () => {
+   const renderRow = (item: Assignment) => (
+      <tr key={item.id} 
+        className="border-n border-gray-200 even:bg-slate-50 text-sm bg:lamaPurpleLight"
+      >
+         <td className="flex items-center gap-4 p-4">{item.subject}</td>
+         <td>{item.class}</td>
+         <td className="hidden md:table-cell">{item.lecturer}</td>
+         <td className="hidden md:table-cell">{item.dueDate}</td>
+         <td className="hidden md:table-cell">
             <div className="flex items-center gap-2">
-               <Link href={`/list/subjects/${item.id}`}>
+               <Link href={`/list/lecturer/${item.id}`}>
                <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky">
                   <Image src="/view.png" alt="" width={16} height={16}/>
                </button>
@@ -89,7 +70,7 @@ const LecturerListPage = () => {
         <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
          {/**TOP SECTION */}
          <div className="flex items-center justify-between">
-            <h1 className="hidden md:block text-lg font-semibold">All Lecturers</h1>
+            <h1 className="hidden md:block text-lg font-semibold">All Assignments</h1>
             <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
                 <TableSearch/>
                 <div className="flex items-center gap-4 self-end">
@@ -99,20 +80,20 @@ const LecturerListPage = () => {
                   <button className="w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow">
                      <Image src={"/sort.png"} alt="" width={14} height={14}/>
                   </button>
-                  { role === "admin" && (
+                  {role === "admin" &&(
                   <button className="w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow">
                      <Image src={"/plus.png"} alt="" width={14} height={14}/>
                   </button>
-                  )}
+                )}
                 </div>
             </div>
          </div>
          {/**List */}
-         <Table columns={columns} renderRow={renderRow} data={lecturersData}/>
+         <Table columns={columns} renderRow={renderRow} data={assignmentsData}/>
          {/**Pagination */}
          <Pagination />
       </div>
      );
 };
 
-export default LecturerListPage
+export default AssignmentListPage
