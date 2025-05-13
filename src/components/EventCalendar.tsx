@@ -15,13 +15,13 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 const events = [
     {
         id: 1,
-        title: "BM engagement session with ICT students",
+        title: "IBM engagement session with ICT students",
         time:"12:00 PM - 17:00PM",
         description: "You are invited to an online session with IBM on (Saturday, 17 May 2025),See the attached flyer for further details."
     },
     {
         id: 2,
-        title: "PPB",
+        title: "Personal and Private Banking",
         time:"09:00 AM - 15:00PM",
         description: "Security Engineer Graduate Programme"
     },
