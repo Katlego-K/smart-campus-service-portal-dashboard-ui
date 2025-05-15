@@ -4,6 +4,7 @@ import Announcements from "@/components/Announcements";
 import BigCalendar from "@/components/BigCalendar";
 import Image from "next/image"
 import Link from "next/link";
+import FormModal from "@/components/FormModal";
 
 const SingleLecturerPage = () => {
     return(
@@ -23,7 +24,26 @@ const SingleLecturerPage = () => {
                          className="w-36 h-36 rounded-full object-cover"/>
                     </div>
                     <div className="w-2/3 flex flex-col justify-between gap-4">
+                        <div className="flex items-center gap-4">
+
                         <h1 className="text-xl font-semibold">Katlego Kaymash</h1>
+                        <FormModal table="lecturer" type="update" data={
+                            {
+                                id:1,
+                                username: "bohlale",
+                                email: "bohlale@gmail.com",
+                                password: "password",
+                                firstName: "Trevor",
+                                lastName: "Kamasha",
+                                phoneNumber: "+277654321",
+                                address: "27 Namune Str, Ivory Park, RSA",
+                                bloodType: "AB+",
+                                dateOfBirth: "2023-12-28",
+                                gender: "male",
+                                img: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                            }
+                        }/>
+                        </div>
                         <p className="text-sm text-gray-500">Why did the Java developer teach his young kids about single quotes?
                             Because they build character
                         </p>
@@ -46,7 +66,6 @@ const SingleLecturerPage = () => {
                             </div>
                         </div>
                     </div>
-                    
                 </div>
                 {/**SMALL CARDS */}
                     <div className="flex-1 flex gap-4 justify-between flex-wrap">
