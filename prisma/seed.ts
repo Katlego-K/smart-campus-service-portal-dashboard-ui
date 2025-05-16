@@ -20,7 +20,7 @@ async function main() {
   for (let i = 1; i <= 6; i++) {
     await prisma.grade.create({
       data: {
-        level: i,
+        level: `${i}B`,
       },
     });
   }
