@@ -20,7 +20,7 @@ async function main() {
   for (let i = 1; i <= 6; i++) {
     await prisma.grade.create({
       data: {
-        level: `${i}B`,
+        level: i,
       },
     });
   }
@@ -61,8 +61,8 @@ async function main() {
       data: {
         id: `lecturer${i}`, // Unique ID for the lecturer
         username: `lecturer${i}`,
-        name: `TName${i}`,
-        surname: `TSurname${i}`,
+        name: `LName${i}`,
+        surname: `LSurname${i}`,
         email: `lecturer${i}@example.com`,
         phoneNumber: `123-456-789${i}`,
         address: `Address${i}`,
