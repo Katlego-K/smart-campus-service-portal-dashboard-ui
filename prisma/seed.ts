@@ -32,6 +32,7 @@ async function main() {
         name: `${i}A`, 
         gradeId: i, 
         capacity: Math.floor(Math.random() * (20 - 15 + 1)) + 15,
+        supervisorId: `${i}A`,
       },
     });
   }
@@ -121,10 +122,9 @@ async function main() {
         address: `Address${i}`,
         bloodType: "O-",
         gender: i % 2 === 0 ? Gender.MALE : Gender.FEMALE,
-        parentId: `parentId${Math.ceil(i / 2) % 25 || 25}`, 
         gradeId: (i % 6) + 1, 
         classId: (i % 6) + 1, 
-        birthday: new Date(new Date().setFullYear(new Date().getFullYear() - 10)),
+        createdAt: new Date(new Date().setFullYear(new Date().getFullYear() - 10)),
       },
     });
   }
@@ -184,7 +184,8 @@ async function main() {
         description: `Description for Event ${i}`, 
         startTime: new Date(new Date().setHours(new Date().getHours() + 1)), 
         endTime: new Date(new Date().setHours(new Date().getHours() + 2)), 
-        classId: (i % 5) + 1, 
+        classId: (i % 5) + 1,
+        date:  new Date(new Date().setHours(new Date().getHours() + 1)), 
       },
     });
   }

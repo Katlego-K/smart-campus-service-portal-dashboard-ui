@@ -22,7 +22,7 @@ CREATE TABLE "Lecturer" (
     "phoneNumber" TEXT,
     "address" TEXT NOT NULL,
     "img" TEXT,
-    "bloodTtype" TEXT NOT NULL,
+    "bloodType" TEXT NOT NULL,
     "gender" "Gender" NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -39,7 +39,7 @@ CREATE TABLE "Student" (
     "phoneNumber" TEXT,
     "address" TEXT NOT NULL,
     "img" TEXT,
-    "bloodTtype" TEXT NOT NULL,
+    "bloodType" TEXT NOT NULL,
     "gender" "Gender" NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "classId" INTEGER NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE "Staff" (
 -- CreateTable
 CREATE TABLE "Grade" (
     "id" SERIAL NOT NULL,
-    "level" TEXT NOT NULL,
+    "level" INTEGER NOT NULL,
 
     CONSTRAINT "Grade_pkey" PRIMARY KEY ("id")
 );
@@ -75,7 +75,6 @@ CREATE TABLE "Class" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "capacity" INTEGER NOT NULL,
-    "supervisorId" TEXT NOT NULL,
     "gradeId" INTEGER NOT NULL,
 
     CONSTRAINT "Class_pkey" PRIMARY KEY ("id")
