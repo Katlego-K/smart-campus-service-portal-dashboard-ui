@@ -21,7 +21,7 @@ model Lecturer{
   phoneNumber String? @unique
   address     String
   img         String?
-  bloodTtype  String
+  bloodType   String
   gender      Gender
   createdAt   DateTime @default(now())
   subjects    Subject[]
@@ -38,7 +38,7 @@ model Student{
   phoneNumber String? @unique
   address     String
   img         String?
-  bloodTtype  String
+  bloodType   String
   gender      Gender
   createdAt   DateTime @default(now())
   classId Int
@@ -62,7 +62,7 @@ model Staff{
 
 model Grade{
     id          Int @id @default(autoincrement())
-    level         String @unique
+    level       Int @unique
 
     students    Student[]
     classes     Class[]
@@ -73,8 +73,8 @@ model Class{
   name        String 
   capacity    Int
   
-  supervisorId String
-  supervisor  Lecturer @relation(fields: [supervisorId], references: [id])
+  supervisorId String?
+  supervisor  Lecturer?  @relation(fields: [supervisorId], references: [id])
   lessons     Lesson[]
   students    Student[]
   gradeId     Int
