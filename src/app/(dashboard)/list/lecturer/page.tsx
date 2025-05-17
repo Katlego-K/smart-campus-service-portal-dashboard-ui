@@ -48,7 +48,7 @@ const  columns =[
 const renderRow = (item: LecturerList) => (
    <tr key={item.id} className="border-n border-gray-200 even:bg-slate-50 text-sm bg:lamaPurpleLight">
          <td className="flex items-center gap-4 p-4">
-            <Image src={item.img || "/noAvatar.png"} 
+            <Image src={item.img || "/avatar.png"} 
             alt=""
              width={40}
               height={40}
@@ -60,8 +60,8 @@ const renderRow = (item: LecturerList) => (
             </div>
          </td>
          <td className="hidden md:table-cell">{item.username}</td>
-         <td className="hidden md:table-cell">{item.subjects.join(",")}</td>
-         <td className="hidden md:table-cell">{item.classes.join(",")}</td>
+         <td className="hidden md:table-cell">{item.subjects.map((Subject: { name: any; }) => Subject.name).join(",")}</td>
+         <td className="hidden md:table-cell">{item.classes.map((classItem: { name: any; }) => classItem.name).join(",")}</td>
          <td className="hidden md:table-cell">{item.phoneNumber}</td>
          <td className="hidden md:table-cell">{item.address}</td>
          <td>
